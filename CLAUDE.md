@@ -8,11 +8,44 @@ This project uses a **dark dashboard design system** built in React + TypeScript
 - **Design System page:** All components live on the "Design System" page in Figma
 - **CSS tokens:** `src/tokens.css` is the single source of truth for all colors, spacing, typography, radius, and shadows
 
+## Mandatory Rules
+
+### 1. All three places must stay in sync
+
+Every component change **must** be reflected in all three places:
+- `<Name>.tsx` + `<Name>.css` — React implementation
+- `<Name>.stories.tsx` — Storybook stories
+- Figma component on the "Design System" page (via Figma MCP)
+
+**Never update one without updating the others.**
+
+### 2. Consistency check after every component change
+
+After any component change, run a structured consistency check:
+1. Read the component from Figma using `get_design_context` (not a screenshot)
+2. Read the Storybook snapshot using `preview_snapshot` or `preview_inspect`
+3. Compare both against the React source
+4. Report any differences found — do not silently skip this step
+
+### 3. Never use screenshot comparison
+
+Always use **structured data** from Figma MCP (`get_design_context`) and Storybook MCP (`preview_snapshot`, `preview_inspect`). Screenshots are only for final human-readable proof, never for diffing.
+
+### 4. Always use existing components — never duplicate logic
+
+When building any UI in this project, use components from `src/components/`. **Never create inline styles that duplicate component logic** (e.g. don't write `style={{ borderRadius: 4, background: '#373841' }}` when `<Button>` or `<Badge>` already exists).
+
+### 5. CSS variables are the single source of truth
+
+All colors and spacing values come from `src/tokens.css`. **Never hardcode a hex color or pixel value** that corresponds to a token. This applies to both CSS files and Figma fills/strokes.
+
+---
+
 ## Working with Components
 
 ### Always use Figma MCP — never guess
 
-When creating or updating components, **always use the Figma MCP** (`get_design_context` or `get_screenshot`) to get exact design tokens, spacing, colors, and properties. **Never guess or compare screenshots manually.**
+When creating or updating components, **always use the Figma MCP** (`get_design_context`) to get exact design tokens, spacing, colors, and properties. **Never guess or compare screenshots manually.**
 
 ```
 # To inspect a component in Figma, use:
@@ -37,19 +70,19 @@ npm run figma:connect:parse
 
 | Component    | Figma Node ID | Type          |
 |--------------|---------------|---------------|
-| Button       | `5-11`        | Component Set |
-| Badge        | `12-23`       | Component Set |
-| Avatar       | `12-31`       | Component Set |
-| Tag          | `12-38`       | Component Set |
-| Alert        | `17-26`       | Component Set |
-| Toast        | `17-44`       | Component Set |
-| Breadcrumb   | `17-46`       | Component     |
-| Dropdown     | `17-78`       | Component Set |
-| StatCard     | `17-95`       | Component Set |
-| Modal        | `19-7`        | Component     |
-| DataTable    | `19-19`       | Component     |
-| Sidebar      | `19-60`       | Component     |
-| Topbar       | `19-83`       | Component     |
+| Button       | `59-13`       | Component Set |
+| Badge        | `48-17`       | Component Set |
+| Avatar       | `49-13`       | Component Set |
+| Tag          | `50-13`       | Component Set |
+| Alert        | `53-35`       | Component Set |
+| Toast        | `57-19`       | Component Set |
+| Breadcrumb   | `62-13`       | Component     |
+| Dropdown     | `63-25`       | Component Set |
+| StatCard     | `44-19`       | Component Set |
+| Modal        | `67-7`        | Component     |
+| DataTable    | `68-7`        | Component     |
+| Sidebar      | `71-12`       | Component     |
+| Topbar       | `71-7`        | Component     |
 
 ## CSS Variable Tokens
 
