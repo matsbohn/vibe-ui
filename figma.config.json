@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": ["src/components/**/*.tsx"],
+    "figmaUrl": "https://www.figma.com/design/zwaWF3nBphX3Wx6skh2ocA/vibe-ui"
+  }
+}
