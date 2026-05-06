@@ -67,23 +67,23 @@
   --transition: 0.15s ease;
 }
 
-/* ─── Light Mode — Barbie ────────────────────────────────────────────────────
+/* ─── Light Mode ────────────────────────────────────────────────────────────
    Applied when <html data-theme="light"> is set (via useTheme hook).
+   All semantic / spacing / typography tokens are unchanged — only colors.
    ────────────────────────────────────────────────────────────────────────── */
 :root[data-theme="light"] {
-  /* ── Colours ── */
-  --background:     #FFF0F7;
+  --background:     #F4F5F9;
   --surface:        #FFFFFF;
-  --border:         #F4A7C3;
-  --border-dim:     rgba(244, 167, 195, 0.4);
+  --border:         #D1D3DC;
+  --border-dim:     rgba(180, 182, 193, 0.4);
 
-  --accent:         #E91E8C;
-  --accent-subtle:  rgba(233, 30, 140, 0.12);
-  --accent-hover:   rgba(233, 30, 140, 0.20);
+  --accent:         #5B5FF1;
+  --accent-subtle:  rgba(91, 95, 241, 0.12);
+  --accent-hover:   rgba(91, 95, 241, 0.20);
 
-  --text-primary:   #3D0030;
-  --text-secondary: #9B5F7C;
-  --text-disabled:  #C9A0B4;
+  --text-primary:   #1A1B22;
+  --text-secondary: #5D6575;
+  --text-disabled:  #9EA3B0;
 
   --success:        #1A9E58;
   --success-subtle: rgba(26, 158, 88, 0.12);
@@ -94,16 +94,7 @@
   --info:           #1E6FD9;
   --info-subtle:    rgba(30, 111, 217, 0.12);
 
-  /* ── Shape — rounded and bubbly ── */
-  --radius-sm:   8px;
-  --radius-md:   16px;
-  --radius-lg:   24px;
-
-  /* ── Font ── */
-  --font-sans: 'Poppins', system-ui, sans-serif;
-
-  /* ── Shadows — pink-tinted ── */
-  --shadow-sm: 0 1px 6px  rgba(233, 30, 140, 0.15);
-  --shadow-md: 0 4px 16px rgba(233, 30, 140, 0.20);
-  --shadow-lg: 0 8px 32px rgba(233, 30, 140, 0.30);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
