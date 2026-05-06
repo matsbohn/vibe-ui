@@ -4,7 +4,7 @@
   justify-content: center;
   border-radius: var(--radius-full);
   background: var(--accent-subtle);
-  border: 1px solid rgba(163, 167, 246, 0.3);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
   color: var(--accent);
   font-weight: var(--font-semibold);
   flex-shrink: 0;

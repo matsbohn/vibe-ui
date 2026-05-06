@@ -11,32 +11,34 @@
   white-space: nowrap;
 }
 
+/* Border is the semantic colour at 25% opacity — derived via color-mix so it
+   automatically follows the CSS variable when the token value changes.       */
 .badge--default {
   background: var(--accent-subtle);
   color: var(--accent);
-  border: 1px solid rgba(163, 167, 246, 0.25);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
 .badge--success {
   background: var(--success-subtle);
   color: var(--success);
-  border: 1px solid rgba(95, 201, 139, 0.25);
+  border: 1px solid color-mix(in srgb, var(--success) 25%, transparent);
 }
 
 .badge--warning {
   background: var(--warning-subtle);
   color: var(--warning);
-  border: 1px solid rgba(245, 166, 35, 0.25);
+  border: 1px solid color-mix(in srgb, var(--warning) 25%, transparent);
 }
 
 .badge--error {
   background: var(--error-subtle);
   color: var(--error);
-  border: 1px solid rgba(240, 96, 96, 0.25);
+  border: 1px solid color-mix(in srgb, var(--error) 25%, transparent);
 }
 
 .badge--info {
   background: var(--info-subtle);
   color: var(--info);
-  border: 1px solid rgba(96, 168, 240, 0.25);
+  border: 1px solid color-mix(in srgb, var(--info) 25%, transparent);
 }
