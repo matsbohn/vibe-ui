@@ -25,7 +25,7 @@
     "@storybook/addon-docs": "^10.3.3",
     "@storybook/addon-onboarding": "^10.3.3",
     "@storybook/addon-vitest": "^10.3.3",
-    "@storybook/test": "^10.3.3",
+    "@storybook/test": "^8.6.15",
     "@storybook/react-vite": "^10.3.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
