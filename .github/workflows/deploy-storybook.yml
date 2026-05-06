@@ -1,4 +1,4 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -27,13 +27,26 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build-storybook
+      # 1. Build the React app → dist/
+      #    vite.config.js sets base='/vibe-ui/' when NODE_ENV=production
+      - name: Build React app
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      # 2. Build Storybook → dist/storybook/
+      #    .storybook/main.js sets outputDir='../dist/storybook' and base='/vibe-ui/storybook/'
+      - name: Build Storybook
+        run: npm run build-storybook
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
+      # 3. Upload the combined dist/ directory as the Pages artifact
+      #    Result: /vibe-ui/          → React weather dashboard
+      #            /vibe-ui/storybook/ → Storybook component library
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: storybook-static
+          path: dist
 
   deploy:
     needs: build

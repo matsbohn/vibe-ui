@@ -25,10 +25,15 @@ export default {
   },
 
   decorators: [
-    (Story) => (
-      <div style={{ fontFamily: "'Inter', system-ui, sans-serif", color: '#DCD9DB', background: '#242529', minHeight: '100vh', padding: '32px' }}>
-        <Story />
-      </div>
-    ),
+    (Story, context) => {
+      if (context.parameters.layout === 'fullscreen') {
+        return <Story />;
+      }
+      return (
+        <div style={{ fontFamily: "'Inter', system-ui, sans-serif", color: '#DCD9DB', background: '#242529', minHeight: '100vh', padding: '32px' }}>
+          <Story />
+        </div>
+      );
+    },
   ],
 };

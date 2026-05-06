@@ -12,9 +12,10 @@ const config = {
     "@storybook/addon-docs"
   ],
   framework: "@storybook/react-vite",
+
   viteFinal: (config, { configType }) => {
     if (configType === 'PRODUCTION') {
-      config.base = '/vibe-ui/';
+      config.base = '/vibe-ui/storybook/';
     }
     return config;
   },

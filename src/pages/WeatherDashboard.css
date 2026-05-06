@@ -1,0 +1,155 @@
+/* ─── Shell ───────────────────────────────────────────────────────────────── */
+.wd {
+  display: flex;
+  min-height: 100vh;
+  background: var(--background);
+  font-family: var(--font-sans);
+}
+
+.wd__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ─── Content area ────────────────────────────────────────────────────────── */
+.wd__content {
+  flex: 1;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  overflow-y: auto;
+}
+
+/* ─── Topbar right slot ───────────────────────────────────────────────────── */
+.wd-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ─── Sidebar logo / footer ───────────────────────────────────────────────── */
+.wd-logo {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  padding: 0 var(--space-4);
+}
+
+.wd-sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-top: 1px solid var(--border-dim);
+}
+
+.wd-sidebar-user {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Stat cards ──────────────────────────────────────────────────────────── */
+.wd__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: var(--space-4);
+}
+
+.wd__stats .stat-card {
+  width: auto;
+}
+
+/* ─── Filter row ──────────────────────────────────────────────────────────── */
+.wd__filter-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.wd__filter-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.wd__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.wd__add-city {
+  background: none;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  padding: 3px var(--space-2);
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.wd__add-city:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ─── Section ─────────────────────────────────────────────────────────────── */
+.wd__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.wd__section-title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+/* ─── Toast (fixed position) ──────────────────────────────────────────────── */
+.wd__toast-container {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 1000;
+}
+
+/* ─── Modal footer ────────────────────────────────────────────────────────── */
+.wd__modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wd__modal-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.wd__modal-temp,
+.wd__modal-wind,
+.wd__modal-humidity {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.wd__modal-no-forecast {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  padding: var(--space-4);
+}

@@ -14,10 +14,10 @@
   width: 200px;
 }
 
-/* Label — 10px · medium · text-secondary · uppercase */
+/* Label — 11px · medium · text-secondary · uppercase */
 .stat-card__label {
   margin: 0;
-  font-size: var(--text-xs);        /* 10px */
+  font-size: var(--text-xs);        /* 11px */
   font-weight: var(--font-medium);  /* 500 */
   color: var(--text-secondary);     /* #858C95 */
   text-transform: uppercase;

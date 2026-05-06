@@ -26,8 +26,10 @@ const columns = [
   {
     key: 'status' as const,
     header: 'Status',
-    render: (val: User['status']) =>
-      <Badge label={val} variant={val === 'Active' ? 'success' : val === 'Pending' ? 'warning' : 'error'} />,
+    render: (val: unknown) => {
+      const v = val as User['status'];
+      return <Badge label={v} variant={v === 'Active' ? 'success' : v === 'Pending' ? 'warning' : 'error'} />;
+    },
   },
 ];
 
