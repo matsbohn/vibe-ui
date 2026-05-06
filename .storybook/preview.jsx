@@ -53,8 +53,8 @@ export default {
       // Fullscreen stories (WeatherDashboard) manage their own layout
       if (context.parameters.layout === 'fullscreen') return <Story />;
 
-      const bg    = theme === 'light' ? '#FFF0F7' : '#242529';
-      const color = theme === 'light' ? '#3D0030' : '#DCD9DB';
+      const bg    = theme === 'light' ? '#F4F5F9' : '#242529';
+      const color = theme === 'light' ? '#1A1B22' : '#DCD9DB';
 
       return (
         <div style={{
