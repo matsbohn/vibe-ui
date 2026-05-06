@@ -86,9 +86,13 @@ npm run figma:connect:parse
 
 ## CSS Variable Tokens
 
-All components must use CSS variables from `src/tokens.css`. **Never hardcode hex colors or pixel values that correspond to a token.**
+All components must use CSS variables from `src/tokens.css`. **Never hardcode hex colors, pixel values, or font names that correspond to a token.**
 
-| Token                | Value                        | Usage                    |
+Every token listed below exists as a Figma variable in `vibe-ui / Tokens` (Dark + Light modes). When re-theming, override any of these in the `:root[data-theme="light"]` block in `tokens.css` AND update the matching Figma variable — both must stay in sync.
+
+### Colours (dark mode defaults)
+
+| Token                | Dark value                   | Usage                    |
 |----------------------|------------------------------|--------------------------|
 | `--background`       | `#242529`                    | Page background          |
 | `--surface`          | `#373841`                    | Cards, sidebars, topbars |
@@ -104,9 +108,57 @@ All components must use CSS variables from `src/tokens.css`. **Never hardcode he
 | `--warning`          | `#F5A623`                    | Warning states           |
 | `--error`            | `#F06060`                    | Error / destructive      |
 | `--info`             | `#60A8F0`                    | Informational            |
-| `--radius-sm`        | `3px`                        | Badges, tags             |
-| `--radius-md`        | `4px`                        | Buttons, inputs, cards   |
-| `--radius-lg`        | `6px`                        | Modals                   |
+
+### Shape
+
+| Token          | Value    | Figma variable  | Usage                   |
+|----------------|----------|-----------------|-------------------------|
+| `--radius-sm`  | `3px`    | `radius/sm`     | Badges, tags            |
+| `--radius-md`  | `4px`    | `radius/md`     | Buttons, inputs, cards  |
+| `--radius-lg`  | `6px`    | `radius/lg`     | Modals                  |
+| `--radius-full`| `9999px` | `radius/full`   | Avatars, pills          |
+
+### Spacing
+
+| Token        | Value  | Figma variable | Token        | Value  | Figma variable |
+|--------------|--------|----------------|--------------|--------|----------------|
+| `--space-1`  | `4px`  | `space/1`      | `--space-5`  | `20px` | `space/5`      |
+| `--space-2`  | `8px`  | `space/2`      | `--space-6`  | `24px` | `space/6`      |
+| `--space-3`  | `12px` | `space/3`      | `--space-8`  | `32px` | `space/8`      |
+| `--space-4`  | `16px` | `space/4`      | `--space-10` | `40px` | `space/10`     |
+
+### Typography
+
+| Token                | Value                              | Figma variable        |
+|----------------------|------------------------------------|-----------------------|
+| `--font-sans`        | `'Inter', system-ui, sans-serif`   | `font/sans` (STRING)  |
+| `--font-mono`        | `'JetBrains Mono', monospace`      | `font/mono` (STRING)  |
+| `--text-xs`          | `11px`                             | `text/xs`             |
+| `--text-sm`          | `12px`                             | `text/sm`             |
+| `--text-base`        | `14px`                             | `text/base`           |
+| `--text-lg`          | `16px`                             | `text/lg`             |
+| `--text-xl`          | `20px`                             | `text/xl`             |
+| `--text-2xl`         | `24px`                             | `text/2xl`            |
+| `--text-3xl`         | `30px`                             | `text/3xl`            |
+| `--font-normal`      | `400`                              | `font/weight-normal`  |
+| `--font-medium`      | `500`                              | `font/weight-medium`  |
+| `--font-semibold`    | `600`                              | `font/weight-semibold`|
+
+### Shadows
+
+| Token          | Figma variable | Dark value                        | Light value                       |
+|----------------|----------------|-----------------------------------|-----------------------------------|
+| `--shadow-sm`  | `shadow/sm`    | `0 1px 3px rgba(0,0,0,0.40)`      | `0 1px 3px rgba(0,0,0,0.08)`      |
+| `--shadow-md`  | `shadow/md`    | `0 4px 12px rgba(0,0,0,0.50)`     | `0 4px 12px rgba(0,0,0,0.12)`     |
+| `--shadow-lg`  | `shadow/lg`    | `0 8px 24px rgba(0,0,0,0.60)`     | `0 8px 24px rgba(0,0,0,0.16)`     |
+
+### Re-theming guide
+
+To apply a completely different look (e.g. Barbie, corporate, retro), override **any** of the above in `:root[data-theme="light"]` in `tokens.css`, then update the matching Figma variables. High-impact changes:
+- **Shape**: change `radius/sm`, `radius/md`, `radius/lg` (e.g. `12px`, `16px`, `24px` = very rounded)
+- **Font**: change `font/sans` (e.g. `'Pacifico', cursive` = playful; `'DM Sans', sans-serif` = clean)
+- **Shadows**: change `shadow/*` (e.g. pink-tinted = `rgba(233,30,140,…)`)
+- **Density**: change `space/*` tokens (larger = airier, smaller = compact)
 
 ## Dev Servers
 
