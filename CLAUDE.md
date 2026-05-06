@@ -94,9 +94,9 @@ All components must use CSS variables from `src/tokens.css`. **Never hardcode he
 | `--surface`          | `#373841`                    | Cards, sidebars, topbars |
 | `--border`           | `#5F6067`                    | All borders              |
 | `--border-dim`       | `rgba(95, 96, 103, 0.4)`     | Subtle dividers          |
-| `--accent`           | `#A3A7F6`                    | Primary interactive      |
-| `--accent-subtle`    | `rgba(163, 167, 246, 0.12)`  | Accent backgrounds       |
-| `--accent-hover`     | `rgba(163, 167, 246, 0.2)`   | Accent hover state       |
+| `--accent`           | `#FF75D6`                    | Primary interactive      |
+| `--accent-subtle`    | `rgba(255, 117, 214, 0.12)`  | Accent backgrounds       |
+| `--accent-hover`     | `rgba(255, 117, 214, 0.2)`   | Accent hover state       |
 | `--text-primary`     | `#DCD9DB`                    | Body text                |
 | `--text-secondary`   | `#858C95`                    | Muted / labels           |
 | `--text-disabled`    | `#5a5d65`                    | Disabled state text      |
