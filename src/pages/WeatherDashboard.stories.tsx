@@ -42,7 +42,7 @@ export const StormWarning: Story = {
   },
 };
 
-/** Light mode — all cities in clear summer conditions */
+/** Barbie light mode — blush pink, hot pink accent */
 export const LightMode: Story = {
   decorators: [
     (Story) => {
@@ -54,7 +54,7 @@ export const LightMode: Story = {
     },
   ],
   parameters: {
-    backgrounds: { default: 'light' },
+    backgrounds: { default: 'barbie', values: [{ name: 'barbie', value: '#FFF0F7' }] },
   },
   args: {
     _testData: MOCK_WEATHER.map((c) => ({
