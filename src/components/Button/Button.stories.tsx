@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Design System/Button',
   component: Button,
   tags: ['autodocs'],
-  args: {
-    onClick: fn(),
+  parameters: {
+    // Auto-wrap any prop starting with "on" + uppercase letter with an action
+    // handler — no extra package required, works with Storybook v10.
+    actions: { argTypesRegex: '^on[A-Z].*' },
   },
   argTypes: {
     variant: {
