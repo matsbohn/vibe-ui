@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useEffect } from 'react';
 import { WeatherDashboard, MOCK_WEATHER } from './WeatherDashboard';
 
 const meta: Meta<typeof WeatherDashboard> = {
@@ -38,6 +39,33 @@ export const StormWarning: Story = {
         ? { ...c, windMs: 18.5, conditionLabel: 'Thunder', badgeVariant: 'error', isStorm: true }
         : c
     ),
+  },
+};
+
+/** Light mode — all cities in clear summer conditions */
+export const LightMode: Story = {
+  decorators: [
+    (Story) => {
+      useEffect(() => {
+        document.documentElement.setAttribute('data-theme', 'light');
+        return () => document.documentElement.removeAttribute('data-theme');
+      }, []);
+      return <Story />;
+    },
+  ],
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+  args: {
+    _testData: MOCK_WEATHER.map((c) => ({
+      ...c,
+      temp: c.temp + 12,
+      windMs: 3.2,
+      precipMm: 0,
+      conditionLabel: 'Clear',
+      badgeVariant: 'success' as const,
+      isStorm: false,
+    })),
   },
 };
 
