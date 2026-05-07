@@ -2,25 +2,28 @@
 
 :root {
   /* Colours */
-  --background: #242529;
-  --surface: #373841;
-  --border: #5F6067;
-  --accent: #A3A7F6;
-  --accent-subtle: rgba(163, 167, 246, 0.12);
-  --accent-hover: rgba(163, 167, 246, 0.2);
-  --text-primary: #DCD9DB;
-  --text-secondary: #9EA4AE;
-  --text-disabled: #767B87;
+  --background:     #F4F5F9;
+  --surface:        #FFFFFF;
+  --border:         #D1D3DC;
+  --border-dim:     rgba(180, 182, 193, 0.4);
+
+  --accent:         #5B5FF1;
+  --accent-subtle:  rgba(91, 95, 241, 0.12);
+  --accent-hover:   rgba(91, 95, 241, 0.20);
+
+  --text-primary:   #1A1B22;
+  --text-secondary: #5D6575;
+  --text-disabled:  #767C8C;
 
   /* Semantic colours */
-  --success: #5FC98B;
-  --success-subtle: rgba(95, 201, 139, 0.12);
-  --warning: #F5A623;
-  --warning-subtle: rgba(245, 166, 35, 0.12);
-  --error: #F06060;
-  --error-subtle: rgba(240, 96, 96, 0.12);
-  --info: #60A8F0;
-  --info-subtle: rgba(96, 168, 240, 0.12);
+  --success:        #1A9E58;
+  --success-subtle: rgba(26, 158, 88, 0.12);
+  --warning:        #C87D0E;
+  --warning-subtle: rgba(200, 125, 14, 0.12);
+  --error:          #D93535;
+  --error-subtle:   rgba(217, 53, 53, 0.12);
+  --info:           #1E6FD9;
+  --info-subtle:    rgba(30, 111, 217, 0.12);
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -56,45 +59,13 @@
   --radius-full: 9999px;
 
   /* Derived colours */
-  --border-dim: rgba(95, 96, 103, 0.4);   /* --border at 40% — row dividers */
+  --border-dim: rgba(180, 182, 193, 0.4);
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
-
-  /* Transitions */
-  --transition: 0.15s ease;
-}
-
-/* ─── Light Mode ────────────────────────────────────────────────────────────
-   Applied when <html data-theme="light"> is set (via useTheme hook).
-   All semantic / spacing / typography tokens are unchanged — only colors.
-   ────────────────────────────────────────────────────────────────────────── */
-:root[data-theme="light"] {
-  --background:     #F4F5F9;
-  --surface:        #FFFFFF;
-  --border:         #D1D3DC;
-  --border-dim:     rgba(180, 182, 193, 0.4);
-
-  --accent:         #5B5FF1;
-  --accent-subtle:  rgba(91, 95, 241, 0.12);
-  --accent-hover:   rgba(91, 95, 241, 0.20);
-
-  --text-primary:   #1A1B22;
-  --text-secondary: #5D6575;
-  --text-disabled:  #767C8C;
-
-  --success:        #1A9E58;
-  --success-subtle: rgba(26, 158, 88, 0.12);
-  --warning:        #C87D0E;
-  --warning-subtle: rgba(200, 125, 14, 0.12);
-  --error:          #D93535;
-  --error-subtle:   rgba(217, 53, 53, 0.12);
-  --info:           #1E6FD9;
-  --info-subtle:    rgba(30, 111, 217, 0.12);
-
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+  /* Transitions */
+  --transition: 0.15s ease;
 }
