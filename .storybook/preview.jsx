@@ -14,8 +14,9 @@ export const globalTypes = {
     toolbar: {
       icon: 'paintbrush',
       items: [
-        { value: 'dark',  icon: 'circlehollow', title: 'Dark'  },
-        { value: 'light', icon: 'circle',        title: 'Light' },
+        { value: 'dark',   icon: 'circlehollow', title: 'Dark'   },
+        { value: 'light',  icon: 'circle',        title: 'Light'  },
+        { value: 'barbie', icon: 'heart',         title: 'Barbie' },
       ],
       dynamicTitle: true,
     },
@@ -42,10 +43,10 @@ export default {
 
       // Apply / remove the data-theme attribute so CSS variables switch globally
       useEffect(() => {
-        if (theme === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        } else {
+        if (theme === 'dark') {
           document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', theme);
         }
         return () => document.documentElement.removeAttribute('data-theme');
       }, [theme]);
@@ -53,8 +54,8 @@ export default {
       // Fullscreen stories (WeatherDashboard) manage their own layout
       if (context.parameters.layout === 'fullscreen') return <Story />;
 
-      const bg    = theme === 'light' ? '#F4F5F9' : '#242529';
-      const color = theme === 'light' ? '#1A1B22' : '#DCD9DB';
+      const bg    = theme === 'light' ? '#F4F5F9' : theme === 'barbie' ? '#F9C6D6' : '#242529';
+      const color = theme === 'light' ? '#1A1B22' : theme === 'barbie' ? '#880E4F' : '#DCD9DB';
 
       return (
         <div style={{

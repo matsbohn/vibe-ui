@@ -98,3 +98,41 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
+
+/* ─── Barbie Mode ───────────────────────────────────────────────────────────
+   Applied when <html data-theme="barbie"> is set (via useTheme hook).
+   Pink palette, rounder corners, playful font.
+   ────────────────────────────────────────────────────────────────────────── */
+:root[data-theme="barbie"] {
+  --background:     #F9C6D6;
+  --surface:        #FFFFFF;
+  --border:         #F06292;
+  --border-dim:     rgba(240, 98, 146, 0.4);
+
+  --accent:         #E91E8C;
+  --accent-subtle:  rgba(233, 30, 140, 0.12);
+  --accent-hover:   rgba(233, 30, 140, 0.20);
+
+  --text-primary:   #880E4F;
+  --text-secondary: #C2185B;
+  --text-disabled:  #F48FB1;
+
+  --success:        #2E7D32;
+  --success-subtle: rgba(46, 125, 50, 0.12);
+  --warning:        #E65100;
+  --warning-subtle: rgba(230, 81, 0, 0.12);
+  --error:          #B71C1C;
+  --error-subtle:   rgba(183, 28, 28, 0.12);
+  --info:           #0277BD;
+  --info-subtle:    rgba(2, 119, 189, 0.12);
+
+  --shadow-sm: 0 1px 3px rgba(233, 30, 140, 0.15);
+  --shadow-md: 0 4px 12px rgba(233, 30, 140, 0.25);
+  --shadow-lg: 0 8px 24px rgba(233, 30, 140, 0.35);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --font-sans: 'Pacifico', 'Comic Sans MS', cursive;
+}

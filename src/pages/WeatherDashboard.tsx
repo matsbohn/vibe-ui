@@ -240,7 +240,7 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
   const topbarRight: ReactNode = (
     <div className="wd-topbar-right">
       <Button
-        label={theme === 'dark' ? '☀ Light' : '☾ Dark'}
+        label={theme === 'dark' ? '☀ Light' : theme === 'light' ? '♡ Barbie' : '☾ Dark'}
         variant="secondary"
         onClick={toggleTheme}
       />
