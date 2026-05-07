@@ -10,7 +10,7 @@ const STORAGE_KEY = 'vibe-theme';
  * - Applies `data-theme="light"` to <html> for light mode;
  *   removes the attribute for dark mode (default).
  */
-export function useTheme(): [Theme, () => void] {
+export function useTheme(): [Theme, (t: Theme) => void] {
   const [theme, setTheme] = useState<Theme>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
@@ -35,7 +35,5 @@ export function useTheme(): [Theme, () => void] {
     }
   }, [theme]);
 
-  const toggle = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
-
-  return [theme, toggle];
+  return [theme, setTheme];
 }
