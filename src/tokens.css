@@ -9,8 +9,8 @@
   --accent-subtle: rgba(163, 167, 246, 0.12);
   --accent-hover: rgba(163, 167, 246, 0.2);
   --text-primary: #DCD9DB;
-  --text-secondary: #858C95;
-  --text-disabled: #5a5d65;
+  --text-secondary: #9EA4AE;
+  --text-disabled: #767B87;
 
   /* Semantic colours */
   --success: #5FC98B;
@@ -83,7 +83,7 @@
 
   --text-primary:   #1A1B22;
   --text-secondary: #5D6575;
-  --text-disabled:  #9EA3B0;
+  --text-disabled:  #767C8C;
 
   --success:        #1A9E58;
   --success-subtle: rgba(26, 158, 88, 0.12);
@@ -109,13 +109,13 @@
   --border:         #F06292;
   --border-dim:     rgba(240, 98, 146, 0.4);
 
-  --accent:         #E91E8C;
-  --accent-subtle:  rgba(233, 30, 140, 0.12);
-  --accent-hover:   rgba(233, 30, 140, 0.20);
+  --accent:         #D6187F;
+  --accent-subtle:  rgba(214, 24, 127, 0.12);
+  --accent-hover:   rgba(214, 24, 127, 0.20);
 
   --text-primary:   #880E4F;
-  --text-secondary: #C2185B;
-  --text-disabled:  #F48FB1;
+  --text-secondary: #99123F;
+  --text-disabled:  #A0426A;
 
   --success:        #2E7D32;
   --success-subtle: rgba(46, 125, 50, 0.12);
