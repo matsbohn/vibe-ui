@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, ReactNode } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import './WeatherDashboard.css';
 import { Sidebar } from '../components/Sidebar/Sidebar';
 import { Topbar } from '../components/Topbar/Topbar';
@@ -151,6 +152,7 @@ export interface WeatherDashboardProps {
 }
 
 export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
+  const [theme, setTheme]                 = useTheme();
   const [data, setData]                   = useState<CityWeather[]>(_testData ?? []);
   const [loading, setLoading]             = useState(!_testData);
   const [error, setError]                 = useState<string | null>(null);
@@ -237,7 +239,15 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
   // ── Topbar right slot ───────────────────────────────────────────────────────
   const topbarRight: ReactNode = (
     <div className="wd-topbar-right">
-<Button label="↻ Refresh" variant="secondary" onClick={fetchAll} />
+      <Dropdown
+        options={[
+          { label: '☀ Light', value: 'light' },
+          { label: '☾ Dark',  value: 'dark'  },
+        ]}
+        value={theme}
+        onChange={(v) => setTheme(v as import('../hooks/useTheme').Theme)}
+      />
+      <Button label="↻ Refresh" variant="secondary" onClick={fetchAll} />
       <Dropdown
         options={[
           { label: 'Focus city…', value: '' },
