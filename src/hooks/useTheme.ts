@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
 
-export type Theme = 'dark' | 'light' | 'barbie';
+export type Theme = 'dark' | 'light';
 
 const STORAGE_KEY = 'vibe-theme';
-
-const CYCLE: Theme[] = ['dark', 'light', 'barbie'];
 
 /**
  * Reads/writes the current theme.
  * - Persists to localStorage.
- * - Applies `data-theme="<theme>"` to <html> for non-dark themes;
+ * - Applies `data-theme="light"` to <html> for light mode;
  *   removes the attribute for dark mode (default).
  */
 export function useTheme(): [Theme, () => void] {
   const [theme, setTheme] = useState<Theme>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === 'light' || stored === 'dark' || stored === 'barbie') return stored;
+      if (stored === 'light' || stored === 'dark') return stored;
     } catch {
       // localStorage unavailable (e.g. SSR / Storybook iframe)
     }
@@ -25,10 +23,10 @@ export function useTheme(): [Theme, () => void] {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.removeAttribute('data-theme');
+    if (theme === 'light') {
+      root.setAttribute('data-theme', 'light');
     } else {
-      root.setAttribute('data-theme', theme);
+      root.removeAttribute('data-theme');
     }
     try {
       localStorage.setItem(STORAGE_KEY, theme);
@@ -37,8 +35,7 @@ export function useTheme(): [Theme, () => void] {
     }
   }, [theme]);
 
-  const toggle = () =>
-    setTheme((t) => CYCLE[(CYCLE.indexOf(t) + 1) % CYCLE.length]);
+  const toggle = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   return [theme, toggle];
 }
