@@ -218,17 +218,6 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
   const [toast, setToast]                   = useState<{ message: string; variant: 'success' | 'error' } | null>(null);
   const [dismissedAlerts, setDismissedAlerts] = useState<string[]>([]);
 
-  // ── Theme ─────────────────────────────────────────────────────────────────
-  const [isDark, setIsDark] = useState<boolean>(() => {
-    const stored = localStorage.getItem('vibe-theme');
-    return stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    localStorage.setItem('vibe-theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
-
   // ── Fetch all areas for the selected city ──────────────────────────────────
   const fetchCity = useCallback(async (city: CityDef) => {
     if (_testData) { setAreaData(_testData[city.name] ?? []); return; }
@@ -299,14 +288,6 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
   const topbarRight: ReactNode = (
     <div className="wd-topbar-right">
       <Button label="↻ Refresh" variant="secondary" onClick={() => fetchCity(selectedCity)} />
-      <button
-        className="wd-theme-toggle"
-        onClick={() => setIsDark(d => !d)}
-        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-        title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      >
-        {isDark ? '☀️' : '🌙'}
-      </button>
       <Avatar initials="MN" size="sm" alt="Mats Nørbech" />
     </div>
   );
