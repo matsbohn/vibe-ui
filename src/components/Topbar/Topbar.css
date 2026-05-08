@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 52px;
-  padding: 0 var(--space-5);
+  height: 56px;
+  padding: 0 var(--space-6);
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   gap: var(--space-4);
@@ -18,7 +18,7 @@
 }
 
 .topbar__title {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: var(--font-semibold);
   color: var(--text-primary);
   white-space: nowrap;

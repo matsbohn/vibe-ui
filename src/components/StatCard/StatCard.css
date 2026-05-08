@@ -1,50 +1,55 @@
 /* ── StatCard ───────────────────────────────────────────────────────────────
    Figma node: 44-19 (Component Set — Trend=Up/Down/Neutral)
-   Specs: 200px wide · 20px padding · 8px gap · radius-md · surface bg
    ───────────────────────────────────────────────────────────────────────── */
 
 .stat-card {
-  background: var(--surface);       /* #373841 */
-  border: 1px solid var(--border);  /* #5F6067 */
-  border-radius: var(--radius-md);  /* 4px */
-  padding: var(--space-5);          /* 20px all sides */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);              /* 8px */
-  width: 200px;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
 }
 
-/* Label — 11px · medium · text-secondary · uppercase */
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Label */
 .stat-card__label {
   margin: 0;
-  font-size: var(--text-xs);        /* 11px */
-  font-weight: var(--font-medium);  /* 500 */
-  color: var(--text-secondary);     /* #858C95 */
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   line-height: 1;
 }
 
-/* Value — 30px · semibold · text-primary · no wrap */
+/* Value */
 .stat-card__value {
   margin: 0;
-  font-size: var(--text-3xl);         /* 30px */
-  font-weight: var(--font-semibold);  /* 600 */
-  color: var(--text-primary);         /* #DCD9DB */
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
   line-height: 1;
   white-space: nowrap;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
-/* Trend — 12px · medium · no wrap · colour per variant */
+/* Trend */
 .stat-card__trend {
   margin: 0;
-  font-size: var(--text-sm);        /* 12px */
-  font-weight: var(--font-medium);  /* 500 */
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
   white-space: nowrap;
   line-height: 1;
 }
 
-.stat-card__trend--up      { color: var(--success);        } /* #5FC98B */
-.stat-card__trend--down    { color: var(--error);           } /* #F06060 */
-.stat-card__trend--neutral { color: var(--text-secondary);  } /* #858C95 */
+.stat-card__trend--up      { color: var(--success);       }
+.stat-card__trend--down    { color: var(--error);          }
+.stat-card__trend--neutral { color: var(--text-secondary); }

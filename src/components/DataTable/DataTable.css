@@ -2,6 +2,7 @@
   overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .data-table {
@@ -11,7 +12,7 @@
 }
 
 .data-table__head {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--background);
 }
 
 .data-table__th {
@@ -19,7 +20,7 @@
   text-align: left;
   font-size: var(--text-xs);
   font-weight: var(--font-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border);
@@ -34,7 +35,7 @@
 .data-table__row:last-child { border-bottom: none; }
 
 .data-table__row:hover {
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--accent-subtle);
 }
 
 .data-table__td {

@@ -62,6 +62,34 @@ interface WeatherRow extends Record<string, unknown> {
   badgeVariant: BadgeVariant;
 }
 
+// ─── Weather icon mapping (OpenWeatherMap icon codes) ─────────────────────────
+const OWM_CODES: Record<string, string> = {
+  'Clear':         '01d',
+  'Partly Cloudy': '02d',
+  'Cloudy':        '04d',
+  'Fog':           '50d',
+  'Rain':          '10d',
+  'Heavy Rain':    '09d',
+  'Snow':          '13d',
+  'Heavy Snow':    '13d',
+  'Sleet':         '13d',
+  'Thunder':       '11d',
+  'Mixed':         '03d',
+};
+
+function owmIcon(condition: string, size = 32) {
+  const code = OWM_CODES[condition] ?? '03d';
+  return (
+    <img
+      className="wd__condition-icon"
+      src={`https://openweathermap.org/img/wn/${code}@2x.png`}
+      alt={condition}
+      width={size}
+      height={size}
+    />
+  );
+}
+
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 function parseCondition(code: string): { label: string; variant: BadgeVariant } {
   const c = (code ?? '').toLowerCase();
@@ -210,8 +238,11 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
     { key: 'humidity',      header: 'Humidity',      width: '80px',
       render: (v) => `${fmt(v as number, 0)}%` },
     { key: 'conditionLabel', header: 'Condition',
-      render: (v, row) => (
-        <Badge label={v as string} variant={row.badgeVariant as BadgeVariant} />
+      render: (v) => (
+        <div className="wd__condition-cell">
+          {owmIcon(v as string, 32)}
+          <span className="wd__condition-label">{v as string}</span>
+        </div>
       ) },
     { key: 'city', header: '',  width: '80px',
       render: (_, row) => (
@@ -303,6 +334,43 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
 
           {/* ── Breadcrumb ── */}
           <Breadcrumb items={[{ label: 'Norway', href: '#' }, { label: 'Weather Dashboard' }]} />
+
+          {/* ── Hero banner ── */}
+          {!loading && filtered.length > 0 && (() => {
+            const featured = filtered[0];
+            const heroDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            const heroCode = OWM_CODES[featured.conditionLabel] ?? '03d';
+            return (
+              <div className="wd__hero">
+                <div className="wd__hero-left">
+                  <p className="wd__hero-eyebrow">🇳🇴 Norway · {heroDate}</p>
+                  <p className="wd__hero-temp">{fmt(avgTemp)}°C</p>
+                  <p className="wd__hero-subtitle">
+                    Avg across {filtered.length} cities · {featured.conditionLabel}
+                  </p>
+                  <div className="wd__hero-meta">
+                    <div className="wd__hero-meta-item">
+                      <span className="wd__hero-meta-label">Max Wind</span>
+                      <span className="wd__hero-meta-value">{fmt(maxWind)} m/s</span>
+                    </div>
+                    <div className="wd__hero-meta-item">
+                      <span className="wd__hero-meta-label">Precipitation</span>
+                      <span className="wd__hero-meta-value">{fmt(totalPrecip, 1)} mm</span>
+                    </div>
+                    <div className="wd__hero-meta-item">
+                      <span className="wd__hero-meta-label">Cities</span>
+                      <span className="wd__hero-meta-value">{filtered.length}</span>
+                    </div>
+                  </div>
+                </div>
+                <img
+                  className="wd__hero-icon"
+                  src={`https://openweathermap.org/img/wn/${heroCode}@2x.png`}
+                  alt={featured.conditionLabel}
+                />
+              </div>
+            );
+          })()}
 
           {/* ── Storm alerts ── */}
           {stormCities
