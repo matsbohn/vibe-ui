@@ -83,6 +83,7 @@ npm run figma:connect:parse
 | DataTable    | `68-7`        | Component     |
 | Sidebar      | `71-12`       | Component     |
 | Topbar       | `71-7`        | Component     |
+| WeatherHero  | `172-25`      | Component     |
 
 ## CSS Variable Tokens
 
