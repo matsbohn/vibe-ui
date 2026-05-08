@@ -78,16 +78,18 @@ const OWM_CODES: Record<string, string> = {
   'Mixed':         '03d',
 };
 
-function owmIcon(condition: string, size = 32) {
+function owmIcon(condition: string, size = 28) {
   const code = OWM_CODES[condition] ?? '03d';
   return (
-    <img
-      className="wd__condition-icon"
-      src={`https://openweathermap.org/img/wn/${code}@2x.png`}
-      alt={condition}
-      width={size}
-      height={size}
-    />
+    <div className="wd__condition-icon-bg">
+      <img
+        className="wd__condition-icon"
+        src={`https://openweathermap.org/img/wn/${code}@2x.png`}
+        alt={condition}
+        width={size}
+        height={size}
+      />
+    </div>
   );
 }
 
