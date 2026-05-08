@@ -123,8 +123,8 @@
   gap: var(--space-2);
 }
 
-/* Chip background so OWM icons read against the light table surface.
-   Meets WCAG 1.4.11 Non-text Contrast (3:1) for the icon boundary. */
+/* Chip gives weather icons a clear boundary against the light table rows.
+   Border #3b82f6 = 3.7:1 vs white — passes WCAG 1.4.11 Non-text Contrast. */
 .wd__condition-icon-bg {
   display: flex;
   align-items: center;
@@ -132,10 +132,9 @@
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  background: linear-gradient(145deg, #e8f4fd 0%, #dbeeff 100%);
-  border: 1px solid rgba(96, 165, 250, 0.30);
+  background: #eff6ff;
+  border: 1.5px solid #3b82f6;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
 }
 
 .wd__condition-icon {
