@@ -351,11 +351,9 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
           {!loading && centre && (
             <WeatherHero
               country={`🇳🇴 ${selectedCity.name}`}
-              avgTemp={centre.temp}
-              cityCount={areaData.length}
+              temp={centre.temp}
+              areaCount={areaData.length}
               condition={centre.conditionLabel}
-              maxWind={maxWind}
-              precipitation={centre.precipMm}
             />
           )}
 

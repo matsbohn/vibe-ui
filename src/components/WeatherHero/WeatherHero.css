@@ -56,31 +56,6 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* ── Meta row ─────────────────────────────────────────────────────────────── */
-.weather-hero__meta {
-  display: flex;
-  gap: var(--space-5);
-  margin-top: var(--space-2);
-}
-
-.weather-hero__meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.weather-hero__meta-label {
-  font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.weather-hero__meta-value {
-  font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-  color: #fff;
-}
 
 /* ── Weather icon ─────────────────────────────────────────────────────────── */
 .weather-hero__icon {

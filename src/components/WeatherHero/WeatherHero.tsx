@@ -2,38 +2,33 @@ import './WeatherHero.css';
 import { weatherIconUrl } from '../../pages/WeatherDashboard';
 
 export interface WeatherHeroProps {
-  /** Country / region label, e.g. "🇳🇴 Norway" */
+  /** Country / city label shown in the eyebrow, e.g. "🇳🇴 Oslo" */
   country?: string;
-  /** Formatted date string, e.g. "8 May 2026" */
+  /** Formatted date string — defaults to today */
   date?: string;
-  /** Average temperature across shown cities (°C) */
-  avgTemp: number;
-  /** Number of cities included in the average */
-  cityCount: number;
+  /** City-centre temperature (°C) */
+  temp: number;
+  /** Number of areas in the selected city */
+  areaCount: number;
   /** Current condition label, e.g. "Partly Cloudy" */
   condition: string;
-  /** Maximum wind speed in m/s */
-  maxWind: number;
-  /** Total precipitation in mm */
-  precipitation: number;
 }
 
 function fmt(n: number, decimals = 1): string {
   return n.toFixed(decimals);
 }
 
-/** Hero banner displayed at the top of the weather dashboard.
+/** Hero banner at the top of the weather dashboard.
  *  Figma node: 172-25 (WeatherHero/Default)
- *  Icons: Basmilius weather-icons (fill/svg) via raw.githubusercontent.com
+ *  Shows city-centre temperature and condition only — wind/precip/humidity
+ *  are already displayed in the stat cards directly below.
  */
 export function WeatherHero({
-  country       = '🇳🇴 Norway',
+  country    = '🇳🇴 Norway',
   date,
-  avgTemp,
-  cityCount,
+  temp,
+  areaCount,
   condition,
-  maxWind,
-  precipitation,
 }: WeatherHeroProps) {
   const heroDate = date ?? new Date().toLocaleDateString('en-GB', {
     day: 'numeric', month: 'long', year: 'numeric',
@@ -43,24 +38,10 @@ export function WeatherHero({
     <div className="weather-hero">
       <div className="weather-hero__left">
         <p className="weather-hero__eyebrow">{country} · {heroDate}</p>
-        <p className="weather-hero__temp">{fmt(avgTemp)}°C</p>
+        <p className="weather-hero__temp">{fmt(temp)}°C</p>
         <p className="weather-hero__subtitle">
-          Avg across {cityCount} {cityCount === 1 ? 'city' : 'cities'} · {condition}
+          {condition} · {areaCount} {areaCount === 1 ? 'area' : 'areas'}
         </p>
-        <div className="weather-hero__meta">
-          <div className="weather-hero__meta-item">
-            <span className="weather-hero__meta-label">Max Wind</span>
-            <span className="weather-hero__meta-value">{fmt(maxWind)} m/s</span>
-          </div>
-          <div className="weather-hero__meta-item">
-            <span className="weather-hero__meta-label">Precipitation</span>
-            <span className="weather-hero__meta-value">{fmt(precipitation, 1)} mm</span>
-          </div>
-          <div className="weather-hero__meta-item">
-            <span className="weather-hero__meta-label">Cities</span>
-            <span className="weather-hero__meta-value">{cityCount}</span>
-          </div>
-        </div>
       </div>
       <img
         className="weather-hero__icon"
