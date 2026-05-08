@@ -15,6 +15,7 @@ import { Toast } from '../components/Toast/Toast';
 import { Modal } from '../components/Modal/Modal';
 import { Dropdown } from '../components/Dropdown/Dropdown';
 import { Button } from '../components/Button/Button';
+import { WeatherHero } from '../components/WeatherHero/WeatherHero';
 
 // ─── City definitions ─────────────────────────────────────────────────────────
 interface City { name: string; lat: number; lon: number; region: string }
@@ -336,41 +337,15 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
           <Breadcrumb items={[{ label: 'Norway', href: '#' }, { label: 'Weather Dashboard' }]} />
 
           {/* ── Hero banner ── */}
-          {!loading && filtered.length > 0 && (() => {
-            const featured = filtered[0];
-            const heroDate = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-            const heroCode = OWM_CODES[featured.conditionLabel] ?? '03d';
-            return (
-              <div className="wd__hero">
-                <div className="wd__hero-left">
-                  <p className="wd__hero-eyebrow">🇳🇴 Norway · {heroDate}</p>
-                  <p className="wd__hero-temp">{fmt(avgTemp)}°C</p>
-                  <p className="wd__hero-subtitle">
-                    Avg across {filtered.length} cities · {featured.conditionLabel}
-                  </p>
-                  <div className="wd__hero-meta">
-                    <div className="wd__hero-meta-item">
-                      <span className="wd__hero-meta-label">Max Wind</span>
-                      <span className="wd__hero-meta-value">{fmt(maxWind)} m/s</span>
-                    </div>
-                    <div className="wd__hero-meta-item">
-                      <span className="wd__hero-meta-label">Precipitation</span>
-                      <span className="wd__hero-meta-value">{fmt(totalPrecip, 1)} mm</span>
-                    </div>
-                    <div className="wd__hero-meta-item">
-                      <span className="wd__hero-meta-label">Cities</span>
-                      <span className="wd__hero-meta-value">{filtered.length}</span>
-                    </div>
-                  </div>
-                </div>
-                <img
-                  className="wd__hero-icon"
-                  src={`https://openweathermap.org/img/wn/${heroCode}@2x.png`}
-                  alt={featured.conditionLabel}
-                />
-              </div>
-            );
-          })()}
+          {!loading && filtered.length > 0 && (
+            <WeatherHero
+              avgTemp={avgTemp}
+              cityCount={filtered.length}
+              condition={filtered[0].conditionLabel}
+              maxWind={maxWind}
+              precipitation={totalPrecip}
+            />
+          )}
 
           {/* ── Storm alerts ── */}
           {stormCities
