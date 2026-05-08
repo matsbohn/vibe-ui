@@ -1,19 +1,5 @@
 import './WeatherHero.css';
-
-// ── OWM icon codes ────────────────────────────────────────────────────────────
-const OWM_CODES: Record<string, string> = {
-  'Clear':         '01d',
-  'Partly Cloudy': '02d',
-  'Cloudy':        '04d',
-  'Fog':           '50d',
-  'Rain':          '10d',
-  'Heavy Rain':    '09d',
-  'Snow':          '13d',
-  'Heavy Snow':    '13d',
-  'Sleet':         '13d',
-  'Thunder':       '11d',
-  'Mixed':         '03d',
-};
+import { weatherIconUrl } from '../../pages/WeatherDashboard';
 
 export interface WeatherHeroProps {
   /** Country / region label, e.g. "🇳🇴 Norway" */
@@ -38,6 +24,7 @@ function fmt(n: number, decimals = 1): string {
 
 /** Hero banner displayed at the top of the weather dashboard.
  *  Figma node: 172-25 (WeatherHero/Default)
+ *  Icons: Basmilius weather-icons (fill/svg) via raw.githubusercontent.com
  */
 export function WeatherHero({
   country       = '🇳🇴 Norway',
@@ -51,7 +38,6 @@ export function WeatherHero({
   const heroDate = date ?? new Date().toLocaleDateString('en-GB', {
     day: 'numeric', month: 'long', year: 'numeric',
   });
-  const owmCode = OWM_CODES[condition] ?? '03d';
 
   return (
     <div className="weather-hero">
@@ -78,7 +64,7 @@ export function WeatherHero({
       </div>
       <img
         className="weather-hero__icon"
-        src={`https://openweathermap.org/img/wn/${owmCode}@2x.png`}
+        src={weatherIconUrl(condition)}
         alt={condition}
       />
     </div>

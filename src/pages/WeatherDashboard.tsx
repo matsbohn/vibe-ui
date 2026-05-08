@@ -63,28 +63,34 @@ interface WeatherRow extends Record<string, unknown> {
   badgeVariant: BadgeVariant;
 }
 
-// ─── Weather icon mapping (OpenWeatherMap icon codes) ─────────────────────────
-const OWM_CODES: Record<string, string> = {
-  'Clear':         '01d',
-  'Partly Cloudy': '02d',
-  'Cloudy':        '04d',
-  'Fog':           '50d',
-  'Rain':          '10d',
-  'Heavy Rain':    '09d',
-  'Snow':          '13d',
-  'Heavy Snow':    '13d',
-  'Sleet':         '13d',
-  'Thunder':       '11d',
-  'Mixed':         '03d',
+// ─── Weather icon mapping (Basmilius weather-icons, fill/svg set) ─────────────
+const ICON_BASE = 'https://raw.githubusercontent.com/basmilius/weather-icons/dev/production/fill/svg';
+
+const WEATHER_ICONS: Record<string, string> = {
+  'Clear':         'clear-day',
+  'Partly Cloudy': 'partly-cloudy-day',
+  'Cloudy':        'cloudy',
+  'Fog':           'fog',
+  'Rain':          'rain',
+  'Heavy Rain':    'extreme-rain',
+  'Snow':          'snow',
+  'Heavy Snow':    'extreme-snow',
+  'Sleet':         'sleet',
+  'Thunder':       'thunderstorms',
+  'Mixed':         'partly-cloudy-day',
 };
 
-function owmIcon(condition: string, size = 28) {
-  const code = OWM_CODES[condition] ?? '03d';
+export function weatherIconUrl(condition: string): string {
+  const name = WEATHER_ICONS[condition] ?? 'partly-cloudy-day';
+  return `${ICON_BASE}/${name}.svg`;
+}
+
+function weatherIcon(condition: string, size = 28) {
   return (
     <div className="wd__condition-icon-bg">
       <img
         className="wd__condition-icon"
-        src={`https://openweathermap.org/img/wn/${code}@2x.png`}
+        src={weatherIconUrl(condition)}
         alt={condition}
         width={size}
         height={size}
@@ -243,7 +249,7 @@ export function WeatherDashboard({ _testData }: WeatherDashboardProps = {}) {
     { key: 'conditionLabel', header: 'Condition',
       render: (v) => (
         <div className="wd__condition-cell">
-          {owmIcon(v as string, 32)}
+          {weatherIcon(v as string, 28)}
           <span className="wd__condition-label">{v as string}</span>
         </div>
       ) },
