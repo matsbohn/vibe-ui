@@ -23,11 +23,11 @@ const CITY_DEFS: CityDef[] = [
   {
     name: 'Oslo', region: 'East Norway',
     areas: [
-      { name: 'City Centre',  lat: 59.9139, lon: 10.7522 },
-      { name: 'Grünerløkka', lat: 59.9201, lon: 10.7609 },
+      { name: 'Sentrum',      lat: 59.9139, lon: 10.7522 },
+      { name: 'Blindern',     lat: 59.9397, lon: 10.7206 },
       { name: 'Holmenkollen', lat: 59.9627, lon: 10.6657 },
-      { name: 'Bærum',        lat: 59.9041, lon: 10.5527 },
-      { name: 'Groruddalen',  lat: 59.9396, lon: 10.8558 },
+      { name: 'Holmlia',      lat: 59.8431, lon: 10.8022 },
+      { name: 'Bygdøy',       lat: 59.9018, lon: 10.6857 },
     ],
   },
   {
@@ -173,11 +173,11 @@ function fmtTime(iso: string): string {
 // ─── Mock data ────────────────────────────────────────────────────────────────
 export const MOCK_CITY_DATA: Record<string, AreaWeather[]> = {
   Oslo: [
-    { name: 'City Centre',  temp: 12.3, windMs: 4.2,  precipMm: 0,   humidity: 68, conditionLabel: 'Partly Cloudy', badgeVariant: 'default', isStorm: false, forecast: [] },
-    { name: 'Grünerløkka', temp: 12.1, windMs: 3.8,  precipMm: 0,   humidity: 70, conditionLabel: 'Partly Cloudy', badgeVariant: 'default', isStorm: false, forecast: [] },
-    { name: 'Holmenkollen', temp: 9.4,  windMs: 7.1,  precipMm: 0.2, humidity: 75, conditionLabel: 'Cloudy',        badgeVariant: 'default', isStorm: false, forecast: [] },
-    { name: 'Bærum',        temp: 11.8, windMs: 3.5,  precipMm: 0,   humidity: 65, conditionLabel: 'Clear',         badgeVariant: 'success', isStorm: false, forecast: [] },
-    { name: 'Groruddalen',  temp: 12.6, windMs: 2.9,  precipMm: 0,   humidity: 72, conditionLabel: 'Partly Cloudy', badgeVariant: 'default', isStorm: false, forecast: [] },
+    { name: 'Sentrum',      temp: 12.3, windMs: 4.2, precipMm: 0,   humidity: 68, conditionLabel: 'Partly Cloudy', badgeVariant: 'default', isStorm: false, forecast: [] },
+    { name: 'Blindern',     temp: 11.7, windMs: 3.6, precipMm: 0,   humidity: 71, conditionLabel: 'Partly Cloudy', badgeVariant: 'default', isStorm: false, forecast: [] },
+    { name: 'Holmenkollen', temp: 9.4,  windMs: 7.1, precipMm: 0.2, humidity: 75, conditionLabel: 'Cloudy',        badgeVariant: 'default', isStorm: false, forecast: [] },
+    { name: 'Holmlia',      temp: 12.8, windMs: 2.8, precipMm: 0,   humidity: 66, conditionLabel: 'Clear',         badgeVariant: 'success', isStorm: false, forecast: [] },
+    { name: 'Bygdøy',       temp: 12.1, windMs: 5.3, precipMm: 0,   humidity: 69, conditionLabel: 'Partly Cloudy', badgeVariant: 'default', isStorm: false, forecast: [] },
   ],
   Bergen: [
     { name: 'City Centre', temp: 9.1,  windMs: 11.5, precipMm: 8.4, humidity: 89, conditionLabel: 'Rain',      badgeVariant: 'info',    isStorm: false, forecast: [] },
