@@ -1,3 +1,8 @@
+/* ─── Theme transition ────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
 /* ─── Shell ───────────────────────────────────────────────────────────────── */
 .wd {
   display: flex;
@@ -29,6 +34,29 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+}
+
+/* ─── Theme toggle ────────────────────────────────────────────────────────── */
+.wd-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.wd-theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-subtle);
 }
 
 /* ─── Sidebar logo / footer ───────────────────────────────────────────────── */

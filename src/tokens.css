@@ -69,3 +69,32 @@
   /* Transitions */
   --transition: 0.15s ease;
 }
+
+/* ─── Dark mode overrides ───────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --background:     #242529;
+  --surface:        #373841;
+  --border:         #5F6067;
+  --border-dim:     rgba(95, 96, 103, 0.4);
+
+  --accent:         #FF75D6;
+  --accent-subtle:  rgba(255, 117, 214, 0.12);
+  --accent-hover:   rgba(255, 117, 214, 0.20);
+
+  --text-primary:   #DCD9DB;
+  --text-secondary: #858C95;
+  --text-disabled:  #5a5d65;
+
+  --success:        #5FC98B;
+  --success-subtle: rgba(95, 201, 139, 0.12);
+  --warning:        #F5A623;
+  --warning-subtle: rgba(245, 166, 35, 0.12);
+  --error:          #F06060;
+  --error-subtle:   rgba(240, 96, 96, 0.12);
+  --info:           #60A8F0;
+  --info-subtle:    rgba(96, 168, 240, 0.12);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.50);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.60);
+}
