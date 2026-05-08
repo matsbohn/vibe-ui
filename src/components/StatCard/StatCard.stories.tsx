@@ -5,10 +5,8 @@ const meta: Meta<typeof StatCard> = {
   title: 'Design System/StatCard',
   component: StatCard,
   tags: ['autodocs'],
-  // Match Figma canvas — dark background, no extra padding wrapping
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
+  // Hover state (CSS :hover): shadow-md + translateY(-1px) — interactive in canvas
+  // Matches Figma: Trend=Up|Down|Neutral, State=Default|Hover
 };
 export default meta;
 type Story = StoryObj<typeof StatCard>;

@@ -41,3 +41,18 @@ export const Disabled: Story = {
     label: 'Button',
   },
 };
+
+// ── All variants — mirrors the Figma component set layout ──────────────────
+// Hover and Focus states are CSS-native (: hover / :focus-visible).
+// Primary hover:   opacity 0.88  ·  Secondary hover: accent-subtle bg + accent border
+// Focus:           2px accent outline, offset 2px
+export const AllVariants: Story = {
+  name: 'All variants',
+  render: () => (
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+      <Button variant="primary"   label="Primary"   />
+      <Button variant="secondary" label="Secondary" />
+      <Button variant="disabled"  label="Disabled"  />
+    </div>
+  ),
+};
