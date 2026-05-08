@@ -123,8 +123,8 @@
   gap: var(--space-2);
 }
 
-/* Chip gives weather icons a clear boundary against the light table rows.
-   Border #3b82f6 = 3.7:1 vs white — passes WCAG 1.4.11 Non-text Contrast. */
+/* Sky-600 (#0284c7) bg gives the icon cloud (#f3f7fe) 3.81:1 contrast —
+   passes WCAG 1.4.11 Non-text Contrast. No border needed. */
 .wd__condition-icon-bg {
   display: flex;
   align-items: center;
@@ -132,8 +132,7 @@
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  background: #eff6ff;
-  border: 1.5px solid #3b82f6;
+  background: #0284c7;
   border-radius: var(--radius-md);
 }
 
