@@ -14,9 +14,11 @@ export interface SidebarProps {
   items: SidebarItem[];
   footer?: ReactNode;
   collapsed?: boolean;
+  /** Called with the item label when a nav item is clicked */
+  onItemClick?: (label: string) => void;
 }
 
-export function Sidebar({ logo, items, footer, collapsed = false }: SidebarProps) {
+export function Sidebar({ logo, items, footer, collapsed = false, onItemClick }: SidebarProps) {
   return (
     <aside className={`sidebar ${collapsed ? 'sidebar--collapsed' : ''}`}>
       {logo && <div className="sidebar__logo">{logo}</div>}
@@ -28,6 +30,7 @@ export function Sidebar({ logo, items, footer, collapsed = false }: SidebarProps
                 href={item.href ?? '#'}
                 className={`sidebar__item ${item.active ? 'sidebar__item--active' : ''}`}
                 aria-current={item.active ? 'page' : undefined}
+                onClick={onItemClick ? (e) => { e.preventDefault(); onItemClick(item.label); } : undefined}
               >
                 {item.icon && <span className="sidebar__icon">{item.icon}</span>}
                 {!collapsed && <span className="sidebar__label">{item.label}</span>}

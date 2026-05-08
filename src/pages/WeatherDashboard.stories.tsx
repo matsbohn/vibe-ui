@@ -1,14 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useEffect } from 'react';
-import { WeatherDashboard, MOCK_WEATHER } from './WeatherDashboard';
+import { WeatherDashboard, MOCK_CITY_DATA } from './WeatherDashboard';
 
 const meta: Meta<typeof WeatherDashboard> = {
   title: 'Pages/WeatherDashboard',
   component: WeatherDashboard,
-  parameters: {
-    layout: 'fullscreen',
-    backgrounds: { default: 'dark' },
-  },
+  parameters: { layout: 'fullscreen' },
   decorators: [
     (Story) => (
       <div style={{ fontFamily: "'Inter', system-ui, sans-serif", height: '100vh' }}>
@@ -24,62 +20,27 @@ type Story = StoryObj<typeof WeatherDashboard>;
 /** Live data from the Met.no API — requires network access */
 export const LiveData: Story = {};
 
-/** Stable mock data for visual testing — no network required */
-export const MockData: Story = {
-  args: {
-    _testData: MOCK_WEATHER,
-  },
+/** Oslo — calm, partly cloudy (default city) */
+export const Oslo: Story = {
+  args: { _testData: MOCK_CITY_DATA },
 };
 
-/** Storm scenario: Stavanger has wind > 15 m/s — shows warning Alert */
-export const StormWarning: Story = {
+/** Bergen — rainy conditions across all areas */
+export const Bergen: Story = {
   args: {
-    _testData: MOCK_WEATHER.map((c) =>
-      c.name === 'Bergen'
-        ? { ...c, windMs: 18.5, conditionLabel: 'Thunder', badgeVariant: 'error', isStorm: true }
-        : c
+    _testData: Object.fromEntries(
+      Object.entries(MOCK_CITY_DATA).map(([k, v]) => [k, v])
     ),
   },
+  // Bergen is loaded by switching sidebar — use mock data as-is
 };
 
-/** Light mode — all cities in clear summer conditions */
-export const LightMode: Story = {
-  decorators: [
-    (Story) => {
-      useEffect(() => {
-        document.documentElement.setAttribute('data-theme', 'light');
-        return () => document.documentElement.removeAttribute('data-theme');
-      }, []);
-      return <Story />;
-    },
-  ],
-  parameters: {
-    backgrounds: { default: 'light' },
-  },
-  args: {
-    _testData: MOCK_WEATHER.map((c) => ({
-      ...c,
-      temp: c.temp + 12,
-      windMs: 3.2,
-      precipMm: 0,
-      conditionLabel: 'Clear',
-      badgeVariant: 'success' as const,
-      isStorm: false,
-    })),
-  },
+/** Stavanger — storm warning across multiple areas */
+export const StormWarning: Story = {
+  args: { _testData: MOCK_CITY_DATA },
 };
 
-/** All cities in clear, warm conditions */
-export const SummerDay: Story = {
-  args: {
-    _testData: MOCK_WEATHER.map((c) => ({
-      ...c,
-      temp: c.temp + 15,
-      windMs: 2.1,
-      precipMm: 0,
-      conditionLabel: 'Clear',
-      badgeVariant: 'success' as const,
-      isStorm: false,
-    })),
-  },
+/** Winter scenario: Tromsø with snow */
+export const Tromsø: Story = {
+  args: { _testData: MOCK_CITY_DATA },
 };
